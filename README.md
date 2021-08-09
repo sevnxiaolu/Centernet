@@ -1,16 +1,16 @@
 # Objects as Points 项目在pytorch中实现
-####非此项目作者，仅作为学习所用
+#### 非此项目作者，仅作为学习所用
 项目原代码地址：https://github.com/xingyizhou/CenterNet
 论文链接：[arXiv 1904.07850](http://arxiv.org/abs/1904.07850)   
-##项目部署
-###环境说明
+## 项目部署
+### 环境说明
 | cuda版本 | pytorch版本 | python版本 |gpu型号 |
 | :-----: | :-----: | :------: | :------: |
 | 10.2 | 1.7.0 | 3.7.0 | GTX2060 x 1 |
-###准备工作
+### 准备工作
 **需要提前安装好vs2017，编译过程需要**    
 **安装cocoapi:https://www.cnblogs.com/yihe/p/8467984.html**   
-####项目下载安装
+#### 项目下载安装
 ```
 git clone https://github.com/sevnxiaolu/Centernet.git
 pip install -r requirements.txt
