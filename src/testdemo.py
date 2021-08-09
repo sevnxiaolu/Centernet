@@ -17,6 +17,8 @@ python demo.py multi_pose --demo ../images/ --load_model ../models/multi_pose_dl
 python demo.py ddd --demo ../images/ --load_model ../models/ddd_3dop.pth
 
 '''
+
+#测试本地gpu是否能够正常启动
 import torch
 print(torch.__version__)
 print(torch.cuda.is_available())
