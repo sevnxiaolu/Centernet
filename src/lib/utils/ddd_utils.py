@@ -4,7 +4,6 @@ from __future__ import print_function
 
 import numpy as np
 import cv2
-import numpy
 
 def compute_box_3d(dim, location, rotation_y):
   # dim: 3
@@ -55,14 +54,14 @@ def draw_box_3d(image, corners, c=(0, 0, 255)):
   for ind_f in range(3, -1, -1):
     f = face_idx[ind_f]
     for j in range(4):
-        cv2.line(image, (int(corners[f[j],0]), int(corners[f[j], 1])),
+      cv2.line(image, (int(corners[f[j], 0]), int(corners[f[j], 1])),
                (int(corners[f[(j+1)%4], 0]), int(corners[f[(j+1)%4], 1])), c, 2, lineType=cv2.LINE_AA)
     if ind_f == 0:
-        cv2.line(image, (int(corners[f[0], 0]), int(corners[f[0], 1])),
+      cv2.line(image, (int(corners[f[0], 0]), int(corners[f[0], 1])),
                (int(corners[f[2], 0]), int(corners[f[2], 1])), c, 1, lineType=cv2.LINE_AA)
-        cv2.line(image, (int(corners[f[1], 0]), int(corners[f[1], 1])),
+      cv2.line(image, (int(corners[f[1], 0]), int(corners[f[1], 1])),
                (int(corners[f[3], 0]), int(corners[f[3], 1])), c, 1, lineType=cv2.LINE_AA)
-    return image
+  return image
 
 def unproject_2d_to_3d(pt_2d, depth, P):
   # pts_2d: 2
@@ -72,8 +71,7 @@ def unproject_2d_to_3d(pt_2d, depth, P):
   z = depth - P[2, 3]
   x = (pt_2d[0] * depth - P[0, 3] - P[0, 2] * z) / P[0, 0]
   y = (pt_2d[1] * depth - P[1, 3] - P[1, 2] * z) / P[1, 1]
-
-  pt_3d = np.array([x, y, z], dtype=np.int16)
+  pt_3d = np.array([x, y, z], dtype=np.float32)
   return pt_3d
 
 def alpha2rot_y(alpha, x, cx, fx):
@@ -125,8 +123,8 @@ if __name__ == '__main__':
      [0.000000000000e+00, 0.000000000000e+00, 1.000000000000e+00, 4.981016000000e-03]],
     dtype=np.float32)
   alpha = -0.20
-  tl = np.array([712.40, 143.00], dtype=np.int32)
-  br = np.array([810.73, 307.92], dtype=np.int32)
+  tl = np.array([712.40, 143.00], dtype=np.float32)
+  br = np.array([810.73, 307.92], dtype=np.float32)
   ct = (tl + br) / 2
   rotation_y = 0.01
   print('alpha2rot_y', alpha2rot_y(alpha, ct[0], calib[0, 2], calib[0, 0]))

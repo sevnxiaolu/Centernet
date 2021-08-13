@@ -1,4 +1,6 @@
 # Objects as Points 项目在pytorch中实现
+#### 基于中心点的检测框架 Centernet是一个端到端的快速目标检测器
+#### 使用三元组的一级目标检测框架，检测器将目标定位到一个点上（目标中心点），检测器通过热力图寻找中心点然后回归其他属性（3D位置坐标，方向，姿态）。
 #### 非此项目作者，仅作为学习所用
 项目原代码地址：https://github.com/xingyizhou/CenterNet
 论文链接：[arXiv 1904.07850](http://arxiv.org/abs/1904.07850)   
@@ -44,6 +46,7 @@ testdemo中写入了三种检测命令
 # 注意事项
    3D检测发生错误可能在cv.line划线3D框过程中需要将传入的参数坐标由原始的float转成int类型     
    项目中使用的[DCNv2](https://github.com/lbin/DCNv2/tree/pytorch_1.7)  DCNv2为最新版本(支持pytorch1.5-1.7)      
+   执行3D检测时可能出现的错误，由于在cv.line划线（此处生成为3D检测框），需要把传入的坐标参数转换成int型，项目原始类型为float32
    
 
 
