@@ -2,23 +2,15 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import _init_paths
-
-import os
-
-import cv2
-import numpy as np
-from progress.bar import Bar
 import time
-import torch
 
+import numpy as np
+import torch
 from models.decode import exct_decode, agnex_ct_decode
-from models.utils import flip_tensor
-from utils.image import get_affine_transform, transform_preds
-from utils.post_process import ctdet_post_process
-from utils.debugger import Debugger
+from utils.image import transform_preds
 
 from .base_detector import BaseDetector
+
 
 class ExdetDetector(BaseDetector):
   def __init__(self, opt):
